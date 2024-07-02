@@ -1,13 +1,20 @@
 # Todo IT - Part 1
 
 ## Overview
-This is the first part of a three-part project to build a Todo application. This initial phase focuses on creating the fundamental models (classes) with an emphasis on encapsulation and abstraction.
+This is the first part of a three-part project to build a Todo application. 
+This initial phase focuses on creating the fundamental models (classes) with an
+emphasis on encapsulation and abstraction.
 
 ## Project Structure
 The project consists of three main classes:
 1. Person
 2. TodoItem
 3. TodoItemTask
+
+# Todo Application
+
+## UML Class Diagram
+
 |                      Person                      |                      TodoItem                      |                   TodoItemTask                   |
 |--------------------------------------------------|----------------------------------------------------|--------------------------------------------------|
 | - id: int                                        | - id: int                                          | - id: int                                        |
@@ -22,3 +29,4 @@ The project consists of three main classes:
 | + setLastName(String)                            | + isOverdue(): boolean                             | + getSummary(): String                           |
 | + setEmail(String)                               | + getSummary(): String                             |                                                  |
 | + getSummary(): String                           |                                                    |                                                  |
+
