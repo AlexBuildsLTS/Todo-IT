@@ -9,40 +9,22 @@ The project consists of three main classes:
 2. TodoItem
 3. TodoItemTask
 
-Each class is implemented according to specific requirements and includes unit tests.
+## diagram 
++---------------------+         +--------------------+         +--------------------+
+|       Person        |         |      TodoItem      |         |    TodoItemTask    |
++---------------------+         +--------------------+         +--------------------+
+| - id: int           |         | - id: int          |         | - id: int          |
+| - firstName: String |         | - title: String    |         | - assigned: boolean|
+| - lastName: String  |         | - description: String|       | - todoItem: TodoItem|
+| - email: String     |         | - deadline: LocalDate |      | - assignee: Person |
++---------------------+         | - done: boolean    |         +--------------------+
+| + getId(): int      |         | - creator: Person  |         | + getId(): int     |
+| + getFirstName(): String |    +--------------------+         | + isAssigned(): boolean|
+| + getLastName(): String  |    | + getId(): int     |         | + getTodoItem(): TodoItem|
+| + getEmail(): String      |   | + getTitle(): String|        | + getAssignee(): Person|
+| + setFirstName(String)    |   | + setTitle(String) |         | + setAssignee(Person)|
+| + setLastName(String)     |   | + isOverdue(): boolean|      | + getSummary(): String|
+| + setEmail(String)        |   | + getSummary(): String|      +--------------------+
+| + getSummary(): String    |   +--------------------+
++---------------------+
 
-## Technologies Used
-- Java
-- Maven
-- JUnit 5 for unit testing
-
-## Key Features
-- Object-Oriented Programming principles applied
-- Encapsulation of data within classes
-- Comprehensive unit testing for each class
-
-
--------
-## Classes 
-### Person
-Represents an individual user in the system.
-- Fields: id, firstName, lastName, email
-- Methods: Getters, setters, and getSummary()
-
-### TodoItem
-Represents a task to be completed.
-- Fields: id, title, description, deadline, done, creator
-- Methods: Getters, setters, isOverdue(), and getSummary()
-
-### TodoItemTask
-Represents the assignment of a TodoItem to a Person.
-- Fields: id, assigned, todoItem, assignee
-- Methods: Getters, setters, and getSummary()
-
-## TodoItem
-Represents a task to be completed.
-- Fields: id, title, description, deadline, done, creator
-- Methods: Getters, setters, isOverdue(), and getSummary()
-
-
-## Part 1 of TODO-IT
