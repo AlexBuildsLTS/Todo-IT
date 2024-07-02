@@ -7,23 +7,23 @@ public class PersonTest {
 
     @Test
     void testPersonConstructor() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
         assertEquals(1, person.getId());
-        assertEquals("John", person.getFirstName());
-        assertEquals("Doe", person.getLastName());
-        assertEquals("john@example.com", person.getEmail());
+        assertEquals("Alex", person.getFirstName());
+        assertEquals("Lexicon", person.getLastName());
+        assertEquals("alex@example.com", person.getEmail());
     }
 
     @Test
     void testSetFirstName() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
-        person.setFirstName("Jane");
-        assertEquals("Jane", person.getFirstName());
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
+        person.setFirstName("Stefan");
+        assertEquals("Stefan", person.getFirstName());
     }
 
     @Test
     void testSetFirstNameThrowsException() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
         assertThrows(IllegalArgumentException.class, () -> person.setFirstName(null));
         assertThrows(IllegalArgumentException.class, () -> person.setFirstName(""));
         assertThrows(IllegalArgumentException.class, () -> person.setFirstName("  "));
@@ -31,14 +31,14 @@ public class PersonTest {
 
     @Test
     void testSetLastName() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
-        person.setLastName("Smith");
-        assertEquals("Smith", person.getLastName());
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
+        person.setLastName("lexi");
+        assertEquals("lexi", person.getLastName());
     }
 
     @Test
     void testSetLastNameThrowsException() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
         assertThrows(IllegalArgumentException.class, () -> person.setLastName(null));
         assertThrows(IllegalArgumentException.class, () -> person.setLastName(""));
         assertThrows(IllegalArgumentException.class, () -> person.setLastName("  "));
@@ -46,14 +46,14 @@ public class PersonTest {
 
     @Test
     void testSetEmail() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
-        person.setEmail("john.doe@example.com");
-        assertEquals("john.doe@example.com", person.getEmail());
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
+        person.setEmail("alex.youssef@live.com");
+        assertEquals("alex.youssef@live.com", person.getEmail());
     }
 
     @Test
     void testSetEmailThrowsException() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
         assertThrows(IllegalArgumentException.class, () -> person.setEmail(null));
         assertThrows(IllegalArgumentException.class, () -> person.setEmail(""));
         assertThrows(IllegalArgumentException.class, () -> person.setEmail("  "));
@@ -61,7 +61,9 @@ public class PersonTest {
 
     @Test
     void testGetSummary() {
-        Person person = new Person(1, "John", "Doe", "john@example.com");
-        assertEquals("{id: 1, name: John Doe, email: john@example.com}", person.getSummary());
+        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
+        assertEquals("{id: 1, name: Alex Lexicon, email: alex@example.com}", person.getSummary());
     }
+
+
 }
