@@ -37,8 +37,8 @@ public class AppUserTest {
     @Test
     public void testAppUserEqualsAndHashCode() {
         AppUser user1 = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
-        AppUser user2 = new AppUser("sandraorovic", "password456", AppRole.ROLE_APP_USER);
-        AppUser user3 = new AppUser("adminpass", "adminpass", AppRole.ROLE_APP_ADMIN);
+        AppUser user2 = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
+        AppUser user3 = new AppUser("adminuser", "adminpass", AppRole.ROLE_APP_ADMIN);
 
         assertEquals(user1, user2); // Same username and role
         assertNotEquals(user1, user3); // Different username and role

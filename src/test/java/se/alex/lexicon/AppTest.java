@@ -15,11 +15,8 @@ public class AppTest {
         AppUser admin1 = new AppUser("sandraorlovic", "adminpass", AppRole.ROLE_APP_ADMIN);
 
         // Create Persons
-        Person alex = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
-        alex.setCredentials(user1);
-
-        Person sandra = new Person(2, "Sandra", "Orlovic", "sandra.orlovic@example.com");
-        sandra.setCredentials(admin1);
+        Person alex = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", user1);
+        Person sandra = new Person(2, "Sandra", "Orlovic", "sandra.orlovic@example.com", admin1);
 
         // Create TodoItems
         TodoItem todo1 = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(10), false, alex);

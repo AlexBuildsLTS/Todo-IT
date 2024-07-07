@@ -10,14 +10,15 @@ public class Person {
     private AppUser credentials; // New field
 
     // Constructor
-    public Person(int id, String firstName, String lastName, String email) {
-        if (firstName == null || lastName == null || email == null) {
-            throw new IllegalArgumentException("Fields cannot be null");
+    public Person(int id, String firstName, String lastName, String email, AppUser credentials) {
+        if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Fields cannot be null or empty");
         }
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.credentials = credentials;
     }
 
     // Getters and Setters
@@ -34,8 +35,8 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName == null) {
-            throw new IllegalArgumentException("First name cannot be null");
+        if (firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be null or empty");
         }
         this.firstName = firstName;
     }
@@ -45,8 +46,8 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        if (lastName == null) {
-            throw new IllegalArgumentException("Last name cannot be null");
+        if (lastName == null || lastName.isEmpty()) {
+            throw new IllegalArgumentException("Last name cannot be null or empty");
         }
         this.lastName = lastName;
     }
@@ -56,8 +57,8 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        if (email == null) {
-            throw new IllegalArgumentException("Email cannot be null");
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
         }
         this.email = email;
     }
@@ -70,7 +71,6 @@ public class Person {
         this.credentials = credentials;
     }
 
-    // Override toString, equals, and hashCode
     @Override
     public String toString() {
         return "Person{" +
@@ -78,6 +78,7 @@ public class Person {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", credentials=" + credentials +
                 '}';
     }
 
@@ -86,11 +87,15 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && firstName.equals(person.firstName) && lastName.equals(person.lastName) && email.equals(person.email);
+        return id == person.id &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(email, person.email) &&
+                Objects.equals(credentials, person.credentials);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email);
+        return Objects.hash(id, firstName, lastName, email, credentials);
     }
 }

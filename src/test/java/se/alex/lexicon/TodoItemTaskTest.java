@@ -8,7 +8,8 @@ public class TodoItemTaskTest {
 
     @Test
     public void testTodoItemTaskCreation() {
-        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        AppUser user = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", user);
         TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
         TodoItemTask task = new TodoItemTask(1, item, assignee);
         assertEquals(1, task.getId());
@@ -19,7 +20,8 @@ public class TodoItemTaskTest {
 
     @Test
     public void testTodoItemTaskEquals() {
-        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        AppUser user = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", user);
         TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
         TodoItemTask task1 = new TodoItemTask(1, item, assignee);
         TodoItemTask task2 = new TodoItemTask(1, item, assignee);
@@ -28,7 +30,8 @@ public class TodoItemTaskTest {
 
     @Test
     public void testTodoItemTaskHashCode() {
-        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        AppUser user = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", user);
         TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
         TodoItemTask task1 = new TodoItemTask(1, item, assignee);
         TodoItemTask task2 = new TodoItemTask(1, item, assignee);
@@ -37,10 +40,11 @@ public class TodoItemTaskTest {
 
     @Test
     public void testTodoItemTaskToString() {
-        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        AppUser user = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", user);
         TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
         TodoItemTask task = new TodoItemTask(1, item, assignee);
-        String expected = "TodoItemTask{id=1, assigned=true, todoItem=" + item + "}";
+        String expected = "TodoItemTask{id=1, assigned=true, todoItem=" + item + ", assignee=" + assignee + "}";
         assertEquals(expected, task.toString());
     }
 }

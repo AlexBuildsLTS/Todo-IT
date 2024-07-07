@@ -15,8 +15,8 @@ public class TodoItemTask {
         }
         this.id = id;
         this.todoItem = todoItem;
-        this.assigned = assignee != null;
         this.assignee = assignee;
+        this.assigned = assignee != null;
     }
 
     // Getters and Setters
@@ -52,17 +52,17 @@ public class TodoItemTask {
     }
 
     public void setAssignee(Person assignee) {
-        this.assigned = assignee != null;
         this.assignee = assignee;
+        this.assigned = assignee != null;
     }
 
-    // Override toString, equals, and hashCode
     @Override
     public String toString() {
         return "TodoItemTask{" +
                 "id=" + id +
                 ", assigned=" + assigned +
                 ", todoItem=" + todoItem +
+                ", assignee=" + assignee +
                 '}';
     }
 
@@ -71,11 +71,14 @@ public class TodoItemTask {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TodoItemTask that = (TodoItemTask) o;
-        return id == that.id && assigned == that.assigned && todoItem.equals(that.todoItem);
+        return id == that.id &&
+                assigned == that.assigned &&
+                Objects.equals(todoItem, that.todoItem) &&
+                Objects.equals(assignee, that.assignee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, assigned, todoItem);
+        return Objects.hash(id, assigned, todoItem, assignee);
     }
 }

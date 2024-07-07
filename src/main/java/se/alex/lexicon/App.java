@@ -1,42 +1,28 @@
 package se.alex.lexicon;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        // Create AppUsers
-        AppUser user1 = new AppUser("alexyoussef", "password123", AppRole.ROLE_APP_USER);
-        AppUser admin1 = new AppUser("sandraorlovic", "adminpass", AppRole.ROLE_APP_ADMIN);
+        System.out.println("Todo Application");
 
-        // Create Persons
-        Person alex = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
-        alex.setCredentials(user1);
+        AppUser appUser1 = new AppUser("user1", "password", AppRole.ROLE_APP_USER);
+        AppUser appUser2 = new AppUser("admin1", "adminpassword", AppRole.ROLE_APP_ADMIN);
 
-        Person sandra = new Person(2, "Sandra", "Orlovic", "sandra.orlovic@example.com");
-        sandra.setCredentials(admin1);
+        Person person1 = new Person(1, "Alex", "Youssef", "alex.youssef@example.com", appUser1);
+        Person person2 = new Person(2, "Sandra", "Orlovic", "sandra.orlovic@example.com", appUser2);
 
-        // Create TodoItems
-        TodoItem todo1 = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(10), false, alex);
-        TodoItem todo2 = new TodoItem(2, "Review budget", "Review the quarterly budget report", LocalDate.now().plusDays(5), false, sandra);
+        TodoItem todoItem1 = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(10), false, person1);
+        TodoItem todoItem2 = new TodoItem(2, "Review budget", "Review the quarterly budget report", LocalDate.now().plusDays(5), false, person2);
 
-        // Create TodoItemTasks
-        TodoItemTask task1 = new TodoItemTask(1, todo1, alex);
-        TodoItemTask task2 = new TodoItemTask(2, todo2, sandra);
+        TodoItemTask task1 = new TodoItemTask(1, todoItem1, person1);
+        TodoItemTask task2 = new TodoItemTask(2, todoItem2, person2);
 
-        // Print out details
-        System.out.println("AppUsers:");
-        System.out.println(user1);
-        System.out.println(admin1);
-
-        System.out.println("\nPersons:");
-        System.out.println(alex);
-        System.out.println(sandra);
-
-        System.out.println("\nTodoItems:");
-        System.out.println(todo1);
-        System.out.println(todo2);
-
-        System.out.println("\nTodoItemTasks:");
+        System.out.println(person1);
+        System.out.println(person2);
+        System.out.println(todoItem1);
+        System.out.println(todoItem2);
         System.out.println(task1);
         System.out.println(task2);
     }
