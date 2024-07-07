@@ -6,64 +6,40 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PersonTest {
 
     @Test
-    void testPersonConstructor() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
+    public void testPersonCreation() {
+        Person person = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
         assertEquals(1, person.getId());
         assertEquals("Alex", person.getFirstName());
-        assertEquals("Lexicon", person.getLastName());
-        assertEquals("alex@example.com", person.getEmail());
+        assertEquals("Youssef", person.getLastName());
+        assertEquals("alex.youssef@example.com", person.getEmail());
     }
 
     @Test
-    void testSetFirstName() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        person.setFirstName("Stefan");
-        assertEquals("Stefan", person.getFirstName());
+    public void testPersonSetCredentials() {
+        Person person = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        AppUser appUser = new AppUser("alexyoussef", "password", AppRole.ROLE_APP_USER);
+        person.setCredentials(appUser);
+        assertEquals(appUser, person.getCredentials());
     }
 
     @Test
-    void testSetFirstNameThrowsException() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        assertThrows(IllegalArgumentException.class, () -> person.setFirstName(null));
-        assertThrows(IllegalArgumentException.class, () -> person.setFirstName(""));
-        assertThrows(IllegalArgumentException.class, () -> person.setFirstName("  "));
+    public void testPersonEquals() {
+        Person person1 = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        Person person2 = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        assertEquals(person1, person2);
     }
 
     @Test
-    void testSetLastName() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        person.setLastName("lexi");
-        assertEquals("lexi", person.getLastName());
+    public void testPersonHashCode() {
+        Person person1 = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        Person person2 = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        assertEquals(person1.hashCode(), person2.hashCode());
     }
 
     @Test
-    void testSetLastNameThrowsException() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        assertThrows(IllegalArgumentException.class, () -> person.setLastName(null));
-        assertThrows(IllegalArgumentException.class, () -> person.setLastName(""));
-        assertThrows(IllegalArgumentException.class, () -> person.setLastName("  "));
+    public void testPersonToString() {
+        Person person = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        String expected = "Person{id=1, firstName='Alex', lastName='Youssef', email='alex.youssef@example.com'}";
+        assertEquals(expected, person.toString());
     }
-
-    @Test
-    void testSetEmail() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        person.setEmail("alex.youssef@live.com");
-        assertEquals("alex.youssef@live.com", person.getEmail());
-    }
-
-    @Test
-    void testSetEmailThrowsException() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        assertThrows(IllegalArgumentException.class, () -> person.setEmail(null));
-        assertThrows(IllegalArgumentException.class, () -> person.setEmail(""));
-        assertThrows(IllegalArgumentException.class, () -> person.setEmail("  "));
-    }
-
-    @Test
-    void testGetSummary() {
-        Person person = new Person(1, "Alex", "Lexicon", "alex@example.com");
-        assertEquals("{id: 1, name: Alex Lexicon, email: alex@example.com}", person.getSummary());
-    }
-
-
 }

@@ -3,27 +3,48 @@ package se.alex.lexicon;
 import java.util.Objects;
 
 public class TodoItemTask {
-    private final int id;
+    private int id;
     private boolean assigned;
-    private final TodoItem todoItem;
+    private TodoItem todoItem;
     private Person assignee;
 
-    public TodoItemTask(int id, TodoItem todoItem) {
+    // Constructor
+    public TodoItemTask(int id, TodoItem todoItem, Person assignee) {
+        if (todoItem == null) {
+            throw new IllegalArgumentException("TodoItem cannot be null");
+        }
         this.id = id;
-        this.todoItem = Objects.requireNonNull(todoItem, "TodoItem cannot be null");
-        this.assigned = false;
+        this.todoItem = todoItem;
+        this.assigned = assignee != null;
+        this.assignee = assignee;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isAssigned() {
         return assigned;
     }
 
+    public void setAssigned(boolean assigned) {
+        this.assigned = assigned;
+    }
+
     public TodoItem getTodoItem() {
         return todoItem;
+    }
+
+    public void setTodoItem(TodoItem todoItem) {
+        if (todoItem == null) {
+            throw new IllegalArgumentException("TodoItem cannot be null");
+        }
+        this.todoItem = todoItem;
     }
 
     public Person getAssignee() {
@@ -31,12 +52,30 @@ public class TodoItemTask {
     }
 
     public void setAssignee(Person assignee) {
+        this.assigned = assignee != null;
         this.assignee = assignee;
-        this.assigned = (assignee != null);
     }
 
-    public String getSummary() {
-        return String.format("TodoItemTask{id=%d, assigned=%b, todoItem=%s, assignee=%s}",
-                id, assigned, todoItem.getSummary(), assignee != null ? assignee.getSummary() : "none");
+    // Override toString, equals, and hashCode
+    @Override
+    public String toString() {
+        return "TodoItemTask{" +
+                "id=" + id +
+                ", assigned=" + assigned +
+                ", todoItem=" + todoItem +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return id == that.id && assigned == that.assigned && todoItem.equals(that.todoItem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, assigned, todoItem);
     }
 }

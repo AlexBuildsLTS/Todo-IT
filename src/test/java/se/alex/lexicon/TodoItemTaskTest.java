@@ -1,58 +1,46 @@
 package se.alex.lexicon;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TodoItemTaskTest {
 
-    private Person creator;
-    private TodoItem todoItem;
-    private TodoItemTask todoItemTask;
-
-    @BeforeEach
-    void setUp() {
-        creator = new Person(1, "John", "Doe", "john@example.com");
-        todoItem = new TodoItem(1, "Test Task", LocalDate.now().plusDays(1), creator);
-        todoItemTask = new TodoItemTask(1, todoItem);
+    @Test
+    public void testTodoItemTaskCreation() {
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
+        TodoItemTask task = new TodoItemTask(1, item, assignee);
+        assertEquals(1, task.getId());
+        assertTrue(task.isAssigned());
+        assertEquals(item, task.getTodoItem());
+        assertEquals(assignee, task.getAssignee());
     }
 
     @Test
-    void testConstructor() {
-        assertEquals(1, todoItemTask.getId());
-        assertEquals(todoItem, todoItemTask.getTodoItem());
-        assertFalse(todoItemTask.isAssigned());
-        assertNull(todoItemTask.getAssignee());
+    public void testTodoItemTaskEquals() {
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
+        TodoItemTask task1 = new TodoItemTask(1, item, assignee);
+        TodoItemTask task2 = new TodoItemTask(1, item, assignee);
+        assertEquals(task1, task2);
     }
 
     @Test
-    void testSetAssignee() {
-        Person assignee = new Person(2, "Jane", "Doe", "jane@example.com");
-        todoItemTask.setAssignee(assignee);
-        assertTrue(todoItemTask.isAssigned());
-        assertEquals(assignee, todoItemTask.getAssignee());
+    public void testTodoItemTaskHashCode() {
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
+        TodoItemTask task1 = new TodoItemTask(1, item, assignee);
+        TodoItemTask task2 = new TodoItemTask(1, item, assignee);
+        assertEquals(task1.hashCode(), task2.hashCode());
     }
 
     @Test
-    void testSetAssigneeToNull() {
-        Person assignee = new Person(2, "Jane", "Doe", "jane@example.com");
-        todoItemTask.setAssignee(assignee);
-        assertTrue(todoItemTask.isAssigned());
-
-        todoItemTask.setAssignee(null);
-        assertFalse(todoItemTask.isAssigned());
-        assertNull(todoItemTask.getAssignee());
-    }
-
-    @Test
-    void testGetSummary() {
-        String expected = String.format("TodoItemTask{id=1, assigned=false, todoItem=%s, assignee=none}", todoItem.getSummary());
-        assertEquals(expected, todoItemTask.getSummary());
-
-        Person assignee = new Person(2, "Jane", "Doe", "jane@example.com");
-        todoItemTask.setAssignee(assignee);
-        expected = String.format("TodoItemTask{id=1, assigned=true, todoItem=%s, assignee=%s}", todoItem.getSummary(), assignee.getSummary());
-        assertEquals(expected, todoItemTask.getSummary());
+    public void testTodoItemTaskToString() {
+        Person assignee = new Person(1, "Alex", "Youssef", "alex.youssef@example.com");
+        TodoItem item = new TodoItem(1, "Change tires", "Change car tires to winter tires", LocalDate.now().plusDays(1), false, assignee);
+        TodoItemTask task = new TodoItemTask(1, item, assignee);
+        String expected = "TodoItemTask{id=1, assigned=true, todoItem=" + item + "}";
+        assertEquals(expected, task.toString());
     }
 }

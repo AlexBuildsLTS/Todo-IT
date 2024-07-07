@@ -4,23 +4,33 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class TodoItem {
-    private final int id;
+    private int id;
     private String title;
     private String description;
     private LocalDate deadLine;
     private boolean done;
-    private final Person creator;
+    private Person creator;
 
-    public TodoItem(int id, String title, LocalDate deadLine, Person creator) {
+    // Constructor
+    public TodoItem(int id, String title, String description, LocalDate deadLine, boolean done, Person creator) {
+        if (title == null || title.isEmpty() || deadLine == null || creator == null) {
+            throw new IllegalArgumentException("Fields cannot be null or empty");
+        }
         this.id = id;
-        setTitle(title);
-        setDeadLine(deadLine);
-        this.creator = Objects.requireNonNull(creator, "Creator cannot be null");
-        this.done = false;
+        this.title = title;
+        this.description = description;
+        this.deadLine = deadLine;
+        this.done = done;
+        this.creator = creator;
     }
 
+    // Getters and Setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -28,7 +38,7 @@ public class TodoItem {
     }
 
     public void setTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
+        if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Title cannot be null or empty");
         }
         this.title = title;
@@ -47,7 +57,10 @@ public class TodoItem {
     }
 
     public void setDeadLine(LocalDate deadLine) {
-        this.deadLine = Objects.requireNonNull(deadLine, "Deadline cannot be null");
+        if (deadLine == null) {
+            throw new IllegalArgumentException("Deadline cannot be null");
+        }
+        this.deadLine = deadLine;
     }
 
     public boolean isDone() {
@@ -62,12 +75,40 @@ public class TodoItem {
         return creator;
     }
 
+    public void setCreator(Person creator) {
+        if (creator == null) {
+            throw new IllegalArgumentException("Creator cannot be null");
+        }
+        this.creator = creator;
+    }
+
+    // isOverdue method
     public boolean isOverdue() {
         return LocalDate.now().isAfter(deadLine);
     }
 
-    public String getSummary() {
-        return String.format("TodoItem{id=%d, title='%s', description='%s', deadLine=%s, done=%b, creator=%s}",
-                id, title, description, deadLine, done, creator.getSummary());
+    // Override toString, equals, and hashCode
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", deadLine=" + deadLine +
+                ", done=" + done +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItem todoItem = (TodoItem) o;
+        return id == todoItem.id && done == todoItem.done && title.equals(todoItem.title) && Objects.equals(description, todoItem.description) && deadLine.equals(todoItem.deadLine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, deadLine, done);
     }
 }
