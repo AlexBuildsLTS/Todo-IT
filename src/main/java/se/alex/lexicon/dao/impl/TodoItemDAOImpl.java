@@ -1,5 +1,6 @@
 package se.alex.lexicon.dao.impl;
 
+import se.alex.lexicon.dao.TodoItemDAO;
 import se.alex.lexicon.model.TodoItem;
 
 import java.time.LocalDate;
@@ -7,8 +8,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class TodoItemDAO implements se.alex.lexicon.dao.TodoItemDAO {
+public class TodoItemDaoImpl implements TodoItemDAO {
+    private static TodoItemDaoImpl instance = null;
     private Collection<TodoItem> todoItems = new ArrayList<>();
+
+    private TodoItemDaoImpl() {}
+
+    public static synchronized TodoItemDaoImpl getInstance() {
+        if (instance == null) {
+            instance = new TodoItemDaoImpl();
+        }
+        return instance;
+    }
 
     @Override
     public void persist(TodoItem todoItem) {

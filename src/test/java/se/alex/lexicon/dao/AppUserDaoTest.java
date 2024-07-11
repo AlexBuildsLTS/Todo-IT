@@ -2,7 +2,7 @@ package se.alex.lexicon.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import se.alex.lexicon.dao.impl.AppUserDAO;
+import se.alex.lexicon.dao.impl.AppUserDAOImpl;
 import se.alex.lexicon.model.AppRole;
 import se.alex.lexicon.model.AppUser;
 
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppUserDaoTest {
 
-    AppUserDAO testObject;
+    AppUserDAOImpl testObject;
 
     @BeforeEach
     public void setUp() {

@@ -1,12 +1,23 @@
 package se.alex.lexicon.dao.impl;
 
+import se.alex.lexicon.dao.PersonDAO;
 import se.alex.lexicon.model.Person;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class PersonDAO implements se.alex.lexicon.dao.PersonDAO {
+public class PersonDaoImpl implements PersonDAO {
+    private static PersonDaoImpl instance = null;
     private Collection<Person> persons = new ArrayList<>();
+
+    private PersonDaoImpl() {}
+
+    public static synchronized PersonDaoImpl getInstance() {
+        if (instance == null) {
+            instance = new PersonDaoImpl();
+        }
+        return instance;
+    }
 
     @Override
     public void persist(Person person) {
