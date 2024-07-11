@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class TodoItemTaskDaoImpl implements TodoItemTaskDAO {
-    private static TodoItemTaskDaoImpl instance = null;
+public class TodoItemTaskDAOImpl implements TodoItemTaskDAO {
+    private static TodoItemTaskDAOImpl instance = null;
     private Collection<TodoItemTask> tasks = new ArrayList<>();
 
-    private TodoItemTaskDaoImpl() {}
+    private TodoItemTaskDAOImpl() {}
 
-    public static synchronized TodoItemTaskDaoImpl getInstance() {
+    public static synchronized TodoItemTaskDAOImpl getInstance() {
         if (instance == null) {
-            instance = new TodoItemTaskDaoImpl();
+            instance = new TodoItemTaskDAOImpl();
         }
         return instance;
     }

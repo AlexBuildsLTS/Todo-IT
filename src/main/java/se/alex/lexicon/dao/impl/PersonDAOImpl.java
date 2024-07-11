@@ -6,15 +6,15 @@ import se.alex.lexicon.model.Person;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class PersonDaoImpl implements PersonDAO {
-    private static PersonDaoImpl instance = null;
+public class PersonDAOImpl implements PersonDAO {
+    private static PersonDAOImpl instance = null;
     private Collection<Person> persons = new ArrayList<>();
 
-    private PersonDaoImpl() {}
+    private PersonDAOImpl() {}
 
-    public static synchronized PersonDaoImpl getInstance() {
+    public static synchronized PersonDAOImpl getInstance() {
         if (instance == null) {
-            instance = new PersonDaoImpl();
+            instance = new PersonDAOImpl();
         }
         return instance;
     }

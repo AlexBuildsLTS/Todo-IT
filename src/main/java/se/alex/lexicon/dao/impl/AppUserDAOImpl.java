@@ -6,15 +6,15 @@ import se.alex.lexicon.model.AppUser;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class AppUserDaoImpl implements AppUserDAO {
-    private static AppUserDaoImpl instance = null;
+public class AppUserDAOImpl implements AppUserDAO {
+    private static AppUserDAOImpl instance = null;
     private Collection<AppUser> appUsers = new ArrayList<>();
 
-    private AppUserDaoImpl() {}
+    private AppUserDAOImpl() {}
 
-    public static synchronized AppUserDaoImpl getInstance() {
+    public static synchronized AppUserDAOImpl getInstance() {
         if (instance == null) {
-            instance = new AppUserDaoImpl();
+            instance = new AppUserDAOImpl();
         }
         return instance;
     }

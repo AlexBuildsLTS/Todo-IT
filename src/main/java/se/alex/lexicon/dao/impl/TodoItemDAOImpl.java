@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class TodoItemDaoImpl implements TodoItemDAO {
-    private static TodoItemDaoImpl instance = null;
+public class TodoItemDAOImpl implements TodoItemDAO {
+    private static TodoItemDAOImpl instance = null;
     private Collection<TodoItem> todoItems = new ArrayList<>();
 
-    private TodoItemDaoImpl() {}
+    private TodoItemDAOImpl() {}
 
-    public static synchronized TodoItemDaoImpl getInstance() {
+    public static synchronized TodoItemDAOImpl getInstance() {
         if (instance == null) {
-            instance = new TodoItemDaoImpl();
+            instance = new TodoItemDAOImpl();
         }
         return instance;
     }
