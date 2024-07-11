@@ -1,5 +1,6 @@
-package se.alex.lexicon.dao;
+package se.alex.lexicon.dao.impl;
 
+import se.alex.lexicon.dao.TodoItemDAO;
 import se.alex.lexicon.model.TodoItem;
 
 import java.time.LocalDate;

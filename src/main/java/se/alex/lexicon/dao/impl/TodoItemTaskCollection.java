@@ -1,5 +1,6 @@
-package se.alex.lexicon.dao;
+package se.alex.lexicon.dao.impl;
 
+import se.alex.lexicon.dao.TodoItemTaskDAO;
 import se.alex.lexicon.model.TodoItemTask;
 
 import java.util.ArrayList;

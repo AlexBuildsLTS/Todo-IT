@@ -1,6 +1,6 @@
-package se.alex.lexicon.sequencers;
+package se.alex.lexicon.dao.impl.sequencers;
 
-public class TodoItemIdSequencer {
+public class AppUserIdSequencer {
     private static int currentId = 0;
 
     public static int nextId() {

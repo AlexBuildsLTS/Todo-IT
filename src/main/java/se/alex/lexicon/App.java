@@ -1,6 +1,14 @@
 package se.alex.lexicon;
 
 import se.alex.lexicon.dao.*;
+import se.alex.lexicon.dao.impl.AppUserCollection;
+import se.alex.lexicon.dao.impl.PersonCollection;
+import se.alex.lexicon.dao.impl.TodoItemCollection;
+import se.alex.lexicon.dao.impl.TodoItemTaskCollection;
+import se.alex.lexicon.dao.impl.sequencers.AppUserIdSequencer;
+import se.alex.lexicon.dao.impl.sequencers.PersonIdSequencer;
+import se.alex.lexicon.dao.impl.sequencers.TodoItemIdSequencer;
+import se.alex.lexicon.dao.impl.sequencers.TodoItemTaskIdSequencer;
 import se.alex.lexicon.model.*;
 import se.alex.lexicon.sequencers.*;
 import java.time.LocalDate;

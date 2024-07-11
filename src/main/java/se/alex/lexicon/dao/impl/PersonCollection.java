@@ -1,5 +1,6 @@
-package se.alex.lexicon.dao;
+package se.alex.lexicon.dao.impl;
 
+import se.alex.lexicon.dao.PersonDAO;
 import se.alex.lexicon.model.Person;
 
 import java.util.ArrayList;
