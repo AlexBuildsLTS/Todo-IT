@@ -1,7 +1,8 @@
-package se.alex.lexicon.dao.impl;
+package se.alex.lexicon.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se.alex.lexicon.dao.impl.AppUserDAOImpl;
 import se.alex.lexicon.model.AppUser;
 import se.alex.lexicon.model.AppRole;
 

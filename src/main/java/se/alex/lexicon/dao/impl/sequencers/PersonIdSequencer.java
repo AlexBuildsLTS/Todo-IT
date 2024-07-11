@@ -1,7 +1,10 @@
-package se.alex.lexicon.dao.impl.sequencers;
+package se.alex.lexicon.dao.impl.sequencer;
 
 public class PersonIdSequencer {
     private static int currentId = 0;
+
+    private PersonIdSequencer() {
+    }
 
     public static int nextId() {
         return ++currentId;
@@ -11,7 +14,7 @@ public class PersonIdSequencer {
         return currentId;
     }
 
-    public static void setCurrentId(int id) {
-        currentId = id;
+    public static void setCurrentId(int currentId) {
+        PersonIdSequencer.currentId = currentId;
     }
 }
