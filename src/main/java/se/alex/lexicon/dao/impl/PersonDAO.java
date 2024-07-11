@@ -1,12 +1,11 @@
 package se.alex.lexicon.dao.impl;
 
-import se.alex.lexicon.dao.PersonDAO;
 import se.alex.lexicon.model.Person;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class PersonCollection implements PersonDAO {
+public class PersonDAO implements se.alex.lexicon.dao.PersonDAO {
     private Collection<Person> persons = new ArrayList<>();
 
     @Override

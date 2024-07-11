@@ -1,13 +1,12 @@
 package se.alex.lexicon.dao.impl;
 
-import se.alex.lexicon.dao.TodoItemTaskDAO;
 import se.alex.lexicon.model.TodoItemTask;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class TodoItemTaskCollection implements TodoItemTaskDAO {
+public class TodoItemTaskDAO implements se.alex.lexicon.dao.TodoItemTaskDAO {
     private Collection<TodoItemTask> tasks = new ArrayList<>();
 
     @Override

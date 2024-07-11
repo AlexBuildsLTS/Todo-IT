@@ -1,10 +1,9 @@
 package se.alex.lexicon;
 
-import se.alex.lexicon.dao.*;
-import se.alex.lexicon.dao.impl.AppUserCollection;
-import se.alex.lexicon.dao.impl.PersonCollection;
-import se.alex.lexicon.dao.impl.TodoItemCollection;
-import se.alex.lexicon.dao.impl.TodoItemTaskCollection;
+import se.alex.lexicon.dao.impl.AppUserDAO;
+import se.alex.lexicon.dao.impl.PersonDAO;
+import se.alex.lexicon.dao.impl.TodoItemDAO;
+import se.alex.lexicon.dao.impl.TodoItemTaskDAO;
 import se.alex.lexicon.dao.impl.sequencers.AppUserIdSequencer;
 import se.alex.lexicon.dao.impl.sequencers.PersonIdSequencer;
 import se.alex.lexicon.dao.impl.sequencers.TodoItemIdSequencer;
@@ -16,10 +15,10 @@ import java.time.LocalDate;
 public class App {
     public static void main(String[] args) {
         // Create DAO instances
-        AppUserDAO appUserDAO = new AppUserCollection();
-        PersonDAO personDAO = new PersonCollection();
-        TodoItemDAO todoItemDAO = new TodoItemCollection();
-        TodoItemTaskDAO todoItemTaskDAO = new TodoItemTaskCollection();
+        se.alex.lexicon.dao.AppUserDAO appUserDAO = new AppUserDAO();
+        se.alex.lexicon.dao.PersonDAO personDAO = new PersonDAO();
+        se.alex.lexicon.dao.TodoItemDAO todoItemDAO = new TodoItemDAO();
+        se.alex.lexicon.dao.TodoItemTaskDAO todoItemTaskDAO = new TodoItemTaskDAO();
 
         // Create and persist some objects
         AppUser appUser = new AppUser(AppUserIdSequencer.nextId(), "username", "password", "email@example.com", AppRole.USER);
