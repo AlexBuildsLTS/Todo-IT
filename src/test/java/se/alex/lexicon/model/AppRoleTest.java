@@ -37,7 +37,7 @@ final class App {
         todoItemTaskDAO.persist(todoItemTask);
 
         // Retrieving and printing data
-        System.out.println("AppUsers:");
+        System.out.println("AppUsersed:");
         appUserDAO.findAll().forEach(System.out::println);
 
         System.out.println("Persons:");

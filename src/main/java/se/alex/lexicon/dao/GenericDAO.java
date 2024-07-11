@@ -2,9 +2,9 @@ package se.alex.lexicon.dao;
 
 import java.util.Collection;
 
-public interface GenericDAO<T> {
-    void persist(T t);
-    T findById(int id);
+public interface GenericDAO<T, ID> {
+    void persist(T entity);
+    T findById(ID id);
     Collection<T> findAll();
-    void remove(T t);
+    void remove(T entity);
 }

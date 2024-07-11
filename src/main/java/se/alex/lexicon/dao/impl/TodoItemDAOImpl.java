@@ -27,7 +27,7 @@ public class TodoItemDAOImpl implements TodoItemDAO {
     }
 
     @Override
-    public TodoItem findById(int id) {
+    public TodoItem findById(Integer id) {
         return todoItems.stream()
                 .filter(item -> item.getId() == id)
                 .findFirst()

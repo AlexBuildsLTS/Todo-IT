@@ -5,6 +5,7 @@ import se.alex.lexicon.model.AppUser;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 public class AppUserDAOImpl implements AppUserDAO {
     private static AppUserDAOImpl instance = null;
@@ -25,7 +26,7 @@ public class AppUserDAOImpl implements AppUserDAO {
     }
 
     @Override
-    public AppUser findById(int id) {
+    public AppUser findById(Integer id) {
         return appUsers.stream()
                 .filter(user -> user.getId() == id)
                 .findFirst()

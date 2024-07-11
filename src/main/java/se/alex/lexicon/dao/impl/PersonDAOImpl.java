@@ -25,7 +25,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public Person findById(int id) {
+    public Person findById(Integer id) {
         return persons.stream()
                 .filter(person -> person.getId() == id)
                 .findFirst()
